@@ -181,3 +181,16 @@ footer a { color: var(--ink-soft); }
 .photo-row figcaption {
   font-size: 0.85rem; color: var(--ink-soft); padding-top: 8px;
 }
+
+
+/* ---------- گالری محصولات سنگ ---------- */
+.stone-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.stone-grid a { display: block; overflow: hidden; border: 1px solid var(--line); }
+.stone-grid img {
+  width: 100%; height: 220px; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.stone-grid a:hover img { transform: scale(1.06); }
