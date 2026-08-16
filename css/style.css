@@ -1,0 +1,152 @@
+/* ============================================================
+   Borhan Trading — استایل اصلی سایت
+   پالت رنگی از خودِ محصولات گرفته شده:
+   فیروزه‌ای (سنگ فیروزه)، صورتی نمکی، زعفرانی، پسته‌ای
+   هر دسته‌ی محصول یک رنگ دارد — برای افزودن دسته‌ی جدید
+   فقط یک متغیر رنگ و یک کارت اضافه کنید.
+   ============================================================ */
+
+:root {
+  --ink: #212a30;        /* رنگ متن اصلی */
+  --ink-soft: #5b6870;   /* متن کم‌رنگ‌تر */
+  --paper: #fbfaf7;      /* پس‌زمینه */
+  --line: #e5e1d8;       /* خطوط جداکننده */
+
+  /* رنگ دسته‌های محصول — دسته‌ی جدید = رنگ جدید اینجا */
+  --firoza: #128e82;     /* فیروزه‌ای: سنگ‌های قیمتی */
+  --salz: #d98e8e;       /* صورتی نمکی: نمک‌های طبیعی */
+  --safran: #d99a2b;     /* زعفرانی: مواد غذایی */
+  --pistazie: #7fa65a;   /* پسته‌ای: سایر محصولات */
+
+  --max: 1080px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: "Karla", "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: "Marcellus", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+a { color: var(--firoza); }
+a:focus-visible { outline: 2px solid var(--firoza); outline-offset: 3px; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- نوار رنگیِ امضای سایت (طیف مواد) ---------- */
+.spectrum {
+  display: flex; height: 6px;
+}
+.spectrum span { flex: 1; }
+.spectrum .s1 { background: var(--firoza); }
+.spectrum .s2 { background: var(--salz); }
+.spectrum .s3 { background: var(--safran); }
+.spectrum .s4 { background: var(--pistazie); }
+
+/* ---------- سربرگ ---------- */
+header { background: var(--paper); }
+
+.topbar {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 22px 0 18px; gap: 16px; flex-wrap: wrap;
+}
+.brand {
+  font-family: "Marcellus", Georgia, serif;
+  font-size: 1.5rem; color: var(--ink); text-decoration: none;
+}
+.brand small {
+  display: block; font-family: "Karla", sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a {
+  color: var(--ink); text-decoration: none; font-size: 0.95rem;
+  letter-spacing: 0.04em; padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+nav a:hover, nav a[aria-current="page"] { border-bottom-color: var(--firoza); }
+nav a.lang { color: var(--ink-soft); border: 1px solid var(--line); border-radius: 3px; padding: 2px 9px; }
+nav a.lang:hover { border-color: var(--firoza); color: var(--firoza); }
+
+/* ---------- بخش قهرمان (Hero) ---------- */
+.hero { padding: 84px 0 72px; border-bottom: 1px solid var(--line); }
+.hero h1 { font-size: clamp(2rem, 5.4vw, 3.4rem); max-width: 17ch; }
+.hero p {
+  margin-top: 22px; max-width: 54ch; font-size: 1.1rem; color: var(--ink-soft);
+}
+.hero .cta {
+  display: inline-block; margin-top: 34px;
+  background: var(--firoza); color: #fff; text-decoration: none;
+  padding: 13px 28px; border-radius: 3px; letter-spacing: 0.03em;
+}
+.hero .cta:hover { background: #0d6f66; }
+
+/* ---------- بخش‌های عمومی ---------- */
+section { padding: 64px 0; }
+.section-title { font-size: 1.7rem; margin-bottom: 8px; }
+.section-lead { color: var(--ink-soft); max-width: 60ch; margin-bottom: 40px; }
+
+/* ---------- کارت‌های دسته‌بندی محصول ----------
+   افزودن دسته‌ی جدید: یک <article class="cat"> کپی کنید
+   و رنگ نوار بالای آن را با style تعیین کنید. */
+.cats {
+  display: grid; gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.cat {
+  background: #fff; border: 1px solid var(--line);
+  border-top: 5px solid var(--firoza);
+  padding: 26px 24px 28px;
+}
+.cat h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.cat p { font-size: 0.97rem; color: var(--ink-soft); }
+.cat ul { margin: 14px 0 0 18px; font-size: 0.95rem; color: var(--ink); }
+.cat li { margin-bottom: 4px; }
+
+/* ---------- بخش دوتایی (متن + نکات) ---------- */
+.split { display: grid; gap: 44px; grid-template-columns: 1.2fr 1fr; align-items: start; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+.facts { border-left: 3px solid var(--safran); padding-left: 22px; }
+.facts dt { font-family: "Marcellus", serif; font-size: 1.05rem; margin-top: 18px; }
+.facts dt:first-child { margin-top: 0; }
+.facts dd { color: var(--ink-soft); font-size: 0.95rem; }
+
+/* ---------- تماس ---------- */
+.contact-grid { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.contact-card { border: 1px solid var(--line); background: #fff; padding: 24px; }
+.contact-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.contact-card p { font-size: 0.97rem; color: var(--ink-soft); }
+
+/* ---------- پابرگ ---------- */
+footer {
+  border-top: 1px solid var(--line); margin-top: 40px;
+  padding: 34px 0 44px; font-size: 0.9rem; color: var(--ink-soft);
+}
+.foot { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+footer a { color: var(--ink-soft); }
+
+/* ---------- صفحات داخلی ---------- */
+.page-head { padding: 56px 0 8px; }
+.page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+
+@media (max-width: 560px) {
+  .hero { padding: 56px 0 48px; }
+  section { padding: 44px 0; }
+}
